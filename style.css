@@ -165,10 +165,51 @@ h2 {
 }
 
 .postcard {
-  width: 400px;
-  padding-top: 35px;
+  width: 100%;
+  margin-top: 35px;
+}
+
+.overlay {
+  position: relative;
+  max-width: 400px;
+}
+
+
+
+.overlay::before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  background-color: rgba(28, 188, 155, 0.7);
+  transition: visibility 4s ease-in-out 0s;
+}
+
+.overlay:hover::before, .overlay:hover::after {
+  visibility: visible;
+}
+
+.overlay::after {
+  content: '\f067';
+  font-family: "Font Awesome 5 Free";
+  font-weight: bold;
+  font-size: 54px;
+  color: white;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  transition: visibility 4s ease-in-out 0s;
 
 }
+
+
 
 .btn.btn-default.btn-lg {
   background-color: #1abc9c;
@@ -196,6 +237,29 @@ h2 {
   border-bottom: 1px solid #e9ecef;
 
 }
+
+.form-group {
+  position: relative;
+}
+
+.testo-form {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  visibility: hidden;
+  color: #1abc9c;
+  opacity: 0;
+  transition: all .3s ease-in-out;
+}
+
+[placeholder="Name"]:focus + span {
+  visibility: visible;
+  top: 0;
+  opacity: 1;
+
+}
+
+
 
 #send-button {
 
@@ -304,9 +368,5 @@ small {
     line-height: 1.5;
   }
 
-  .postcard {
-    width: 312px;
-
-  }
 
 }
